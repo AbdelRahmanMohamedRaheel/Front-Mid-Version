@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { FaComment, FaCog, FaInfoCircle, FaUser, FaSignOutAlt } from 'react-icons/fa';
+import { FaComment, FaCog, FaInfoCircle, FaUser, FaSignOutAlt, FaLightbulb } from 'react-icons/fa';
 import { GiMeditation } from "react-icons/gi"; // Meditation icon
 
 
@@ -19,8 +19,8 @@ function Sidebar() {
                 <NavLink to="chat" className="flex items-center space-x-2">
                     <li className='font-bold'><FaComment className='text-2xl' /> Chat</li>
                 </NavLink>
-                <NavLink to="features" className="flex items-center space-x-2">
-                    <li className='font-bold'><FaCog className='text-2xl' /> Features</li>
+                <NavLink to="awareness" className="flex items-center space-x-2">
+                    <li className='font-bold'><FaLightbulb className='text-2xl' /> Awareness & Tips</li>
                 </NavLink>
                 <NavLink to="about" className="flex items-center space-x-2">
                     <li className='font-bold'><FaInfoCircle className='text-2xl' /> About</li>
