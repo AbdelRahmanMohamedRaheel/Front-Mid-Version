@@ -1,45 +1,55 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaComment, FaCog, FaInfoCircle, FaUser, FaSignOutAlt, FaLightbulb } from 'react-icons/fa';
 import { GiMeditation } from "react-icons/gi"; // Meditation icon
+import { motion } from 'framer-motion';
 
+const sidebarVariants = {
+    hidden: { x: -250, opacity: 0 },
+    visible: { x: 0, opacity: 1, transition: { duration: 0.5, ease: "easeOut" } }
+};
+
+const linkVariants = {
+    hover: { scale: 1.1, transition: { duration: 0.3 } }
+};
 
 function Sidebar() {
-    
     return (
-        <div className="sidebar flex flex-col h-screen items-center">
-
+        <motion.div
+            className="sidebar flex flex-col h-screen items-center bg-gray-900 text-white p-5 w-64 shadow-xl"
+            initial="hidden"
+            animate="visible"
+            variants={sidebarVariants}
+        >
             {/* Logo */}
-            <div className="logo">
-                <img src="/body2.png" alt="Logo" className="w-[273px] h-[183px]" />
-            </div>
+            <motion.div className="logo mb-6" whileHover={{ scale: 1.1 }}>
+                <img src="/body2.png" alt="Logo" className="w-[200px] h-auto" />
+            </motion.div>
 
             {/* Navigation Links */}
-            <div className="flex-grow flex flex-col  mt-10">
-                <NavLink to="chat" className="flex items-center space-x-2">
-                    <li className='font-bold'><FaComment className='text-2xl' /> Chat</li>
-                </NavLink>
-                <NavLink to="awareness" className="flex items-center space-x-2">
-                    <li className='font-bold'><FaLightbulb className='text-2xl' /> Awareness & Tips</li>
-                </NavLink>
-                <NavLink to="about" className="flex items-center space-x-2">
-                    <li className='font-bold'><FaInfoCircle className='text-2xl' /> About</li>
-                </NavLink>
-                <NavLink to="profile" className="flex items-center space-x-2">
-                    <li className='font-bold'><FaUser className='text-2xl' /> Profile</li>
-                </NavLink>
-                <NavLink to="meditation" className="flex items-center space-x-2">
-                    <li className='font-bold'><GiMeditation className='text-2xl' /> meditation</li>
-                </NavLink>
+            <div className="flex-grow flex flex-col space-y-6">
+                {[
+                    { to: "chat", label: "Chat", icon: <FaComment /> },
+                    { to: "awareness", label: "Awareness & Tips", icon: <FaLightbulb /> },
+                    { to: "about", label: "About", icon: <FaInfoCircle /> },
+                    { to: "profile", label: "Profile", icon: <FaUser /> },
+                    { to: "meditation", label: "Meditation", icon: <GiMeditation /> }
+                ].map(({ to, label, icon }) => (
+                    <NavLink to={to} key={to} className="flex items-center space-x-3 p-3 rounded-lg transition-all duration-300 hover:bg-gray-700" >
+                        <motion.div variants={linkVariants} whileHover="hover" className="text-xl">{icon}</motion.div>
+                        <motion.span variants={linkVariants} whileHover="hover" className="font-semibold">{label}</motion.span>
+                    </NavLink>
+                ))}
             </div>
 
-            {/* Logout Button at the Bottom */}
-            <div className="mt-auto mb-4">
-                <NavLink to="/" className="flex items-center space-x-2 cursor-pointer">
-                    <li className='font-bold'><FaSignOutAlt className='text-2xl' /> Logout</li>
+            {/* Logout Button */}
+            <motion.div className="mt-auto" whileHover={{ scale: 1.1 }}>
+                <NavLink to="/" className="flex items-center space-x-3 p-3 rounded-lg transition-all duration-300 hover:bg-red-600">
+                    <FaSignOutAlt className='text-xl' />
+                    <span className="font-semibold">Logout</span>
                 </NavLink>
-            </div>
-        </div>
+            </motion.div>
+        </motion.div>
     );
 }
 

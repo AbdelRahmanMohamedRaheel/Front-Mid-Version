@@ -3,6 +3,7 @@ import React from 'react';
 export default function Card1() {
     return (
         <div className="min-h-screen bg-[url('bg-image.jpg')] bg-cover bg-center">
+            
             <div className="container mx-auto px-4 py-8">
                 <div className="max-w-3xl mx-auto bg-white bg-opacity-90 rounded-lg shadow-lg p-6">
                     <div className="mb-8">
