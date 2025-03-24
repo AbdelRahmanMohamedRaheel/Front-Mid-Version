@@ -28,6 +28,7 @@ import Card15 from './Components/CardsDetails/Card15';
 import Card16 from './Components/CardsDetails/Card16';
 import Card17 from './Components/CardsDetails/Card17';
 import Card18 from './Components/CardsDetails/Card18';
+import Quotes from './Components/Quotes/Quotes';
 
 
 const router = createBrowserRouter([
@@ -43,6 +44,7 @@ const router = createBrowserRouter([
       { path: "awareness", element: <Features /> },
       { path: "about", element: <About /> },
       { path: "meditation", element: <Meditation /> },
+      { path: "quotes", element: <Quotes /> },
       { path: "theory1", element: <Card1 /> },
       { path: "theory2", element: <Card2 /> },
       { path: "theory3", element: <Card3 /> },

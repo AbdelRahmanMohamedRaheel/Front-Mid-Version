@@ -39,67 +39,67 @@ export default function Features() {
 
   return (
     <>
-      <div className='min-h-screen bg-[url("bg-image.jpg")] h-screen bg-cover bg-center'>
-        <div className="pt-8 ps-15 ">
-          <div>
-            <p className="text-[#257f69] uppercase text-[14px] font-bold">
+      <div className='min-h-screen bg-[url("/bg-image.jpg")] bg-cover bg-center'>
+        <div className="container mx-auto px-4 py-8">
+          <div className="text-center md:text-left">
+            <p className="text-[#257f69] uppercase text-sm md:text-[14px] font-bold">
               Psychology
             </p>
-            <h1 className="text-[#13404F] text-[52px] font-bold ">
+            <h1 className="text-[#13404F] text-3xl md:text-[52px] font-bold mt-2">
               Explore Theories of Mental Health
             </h1>
           </div>
           {/* buttons */}
-          <div className="mt-2.5">
+          <div className="flex flex-wrap justify-center md:justify-start gap-2 mt-4">
             <button
               type="button"
-              className="border font-extrabold rounded-lg text-sm px-4 py-2 text-center me-2 mb-2 border-[#257f69] text-[#257f69] hover:text-white hover:bg-green-600 focus:ring-green-800"
+              className="border font-extrabold rounded-lg text-sm px-4 py-2 text-center border-[#257f69] text-[#257f69] hover:text-white hover:bg-green-600 focus:ring-green-800"
               onClick={() => setActiveCategory("all")}
             >
               All
             </button>
             <button
               type="button"
-              className="border font-extrabold rounded-lg text-sm px-4 py-2 text-center me-2 mb-2 border-[#257f69] text-[#257f69] hover:text-white hover:bg-green-600 focus:ring-green-800"
+              className="border font-extrabold rounded-lg text-sm px-4 py-2 text-center border-[#257f69] text-[#257f69] hover:text-white hover:bg-green-600 focus:ring-green-800"
               onClick={() => setActiveCategory("behavioral")}
             >
               Behavioral Psychology
             </button>
             <button
               type="button"
-              className="border font-extrabold rounded-lg text-sm px-4 py-2 text-center me-2 mb-2 border-[#257f69] text-[#257f69] hover:text-white hover:bg-green-600 focus:ring-green-800"
+              className="border font-extrabold rounded-lg text-sm px-4 py-2 text-center border-[#257f69] text-[#257f69] hover:text-white hover:bg-green-600 focus:ring-green-800"
               onClick={() => setActiveCategory("social")}
             >
               Social Psychology
             </button>
             <button
               type="button"
-              className="border font-extrabold rounded-lg text-sm px-4 py-2 text-center me-2 mb-2 border-[#257f69] text-[#257f69] hover:text-white hover:bg-green-600 focus:ring-green-800"
+              className="border font-extrabold rounded-lg text-sm px-4 py-2 text-center border-[#257f69] text-[#257f69] hover:text-white hover:bg-green-600 focus:ring-green-800"
               onClick={() => setActiveCategory("anxiety")}
             >
               Anxiety
             </button>
             <button
               type="button"
-              className="border font-extrabold rounded-lg text-sm px-4 py-2 text-center me-2 mb-2 border-[#257f69] text-[#257f69] hover:text-white hover:bg-green-600 focus:ring-green-800"
+              className="border font-extrabold rounded-lg text-sm px-4 py-2 text-center border-[#257f69] text-[#257f69] hover:text-white hover:bg-green-600 focus:ring-green-800"
               onClick={() => setActiveCategory("depression")}
             >
               Depression
             </button>
           </div>
           {/* cards */}
-          <div className="flex flex-wrap gap-4 mt-5 pb-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 pb-10">
             {categorizedArticles[activeCategory].map(article => (
-              <Link to={`/theory${article.id}`} key={article.id} className="max-w-sm w-1/3 bg-white border border-gray-200 rounded-lg shadow-sm cursor-pointer group overflow-hidden">
+              <Link to={`/theory${article.id}`} key={article.id} className="bg-white border border-gray-200 rounded-lg shadow-sm cursor-pointer group overflow-hidden">
                 <div className="overflow-hidden">
-                  <img className="rounded-t-lg h-55 object-cover w-full transition-transform duration-1000 group-hover:scale-110" src={article.image} alt={article.title} />
+                  <img className="rounded-t-lg h-48 w-full object-cover transition-transform duration-1000 group-hover:scale-110" src={article.image} alt={article.title} />
                 </div>
-                <div className="p-3">
-                  <p className="uppercase text-[12px] font-extrabold text-[#257F69]">Theories</p>
-                  <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 group-hover:text-red-500">
+                <div className="p-4">
+                  <p className="uppercase text-xs font-extrabold text-[#257F69]">Theories</p>
+                  <h5 className="mb-2 text-lg font-bold tracking-tight text-gray-900 group-hover:text-red-500">
                     {article.title}
                   </h5>
-                  <p className="text-[12px] font-normal text-gray-700">{article.author}</p>
+                  <p className="text-xs font-normal text-gray-700">{article.author}</p>
                 </div>
               </Link>
             ))}

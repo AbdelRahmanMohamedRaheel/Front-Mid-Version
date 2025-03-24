@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { FaComment, FaCog, FaInfoCircle, FaUser, FaSignOutAlt, FaLightbulb } from 'react-icons/fa';
+import { FaComment, FaCog, FaInfoCircle, FaUser, FaSignOutAlt, FaLightbulb, FaQuoteLeft } from 'react-icons/fa';
 import { GiMeditation } from "react-icons/gi"; // Meditation icon
 import { motion } from 'framer-motion';
 
@@ -25,7 +25,6 @@ function Sidebar() {
             <motion.div className="logo mb-6" whileHover={{ scale: 1.1 }}>
                 <img src="/body2.png" alt="Logo" className="w-[200px] h-auto" />
             </motion.div>
-
             {/* Navigation Links */}
             <div className="flex-grow flex flex-col space-y-6">
                 {[
@@ -33,7 +32,8 @@ function Sidebar() {
                     { to: "awareness", label: "Awareness & Tips", icon: <FaLightbulb /> },
                     { to: "about", label: "About", icon: <FaInfoCircle /> },
                     { to: "profile", label: "Profile", icon: <FaUser /> },
-                    { to: "meditation", label: "Meditation", icon: <GiMeditation /> }
+                    { to: "meditation", label: "Meditation", icon: <GiMeditation /> },
+                    { to: "quotes", label: "Quotes", icon: <FaQuoteLeft /> } // Updated icon
                 ].map(({ to, label, icon }) => (
                     <NavLink to={to} key={to} className="flex items-center space-x-3 p-3 rounded-lg transition-all duration-300 hover:bg-gray-700" >
                         <motion.div variants={linkVariants} whileHover="hover" className="text-xl">{icon}</motion.div>
