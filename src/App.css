@@ -140,17 +140,26 @@ body {
     border-radius: 5px;
 }
 
-.profile-container button {
+/* .profile-container button {
     padding: 10px;
     background-color: #1a73e8;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+} */
+
+.profile-container button {
+    transition: background-color 0.2s ease;
 }
 
-.profile-container button:hover {
-    background-color: #1557b0;
+.profile-container button[type="submit"]:hover {
+    background-color: #2563eb;
+    /* blue-600 */
+}
+
+.profile-container button[type="button"]:hover {
+    background-color: #a12330;
 }
 
 .chat-container {

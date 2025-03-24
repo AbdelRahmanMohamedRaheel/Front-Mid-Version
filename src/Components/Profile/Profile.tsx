@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { SlArrowLeft } from "react-icons/sl";
 import { FaCamera } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Profile() {
   const [profileImage, setProfileImage] = useState(null);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const navigate = useNavigate();
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
@@ -13,12 +15,53 @@ function Profile() {
       setProfileImage(imageUrl);
     }
   };
-useEffect(() => {
-      document.title='Profile'
-    }, [])
-    
+
+  const handleDeleteAccount = () => {
+    // Add your account deletion logic here
+    // For example, call an API to delete the account
+
+    // After account deletion, navigate to login page
+    navigate("/"); // Make sure you have a login route set up
+  };
+
+  const openDeleteModal = () => {
+    setShowDeleteModal(true);
+  };
+
+  const closeDeleteModal = () => {
+    setShowDeleteModal(false);
+  };
+
+  useEffect(() => {
+    document.title = 'Profile';
+  }, []);
+
   return (
     <div className="h-screen w-screen bg-[url('/bg-image.jpg')] bg-cover bg-center flex items-center justify-center overflow-hidden fixed top-0 left-0">
+      {/* Delete Confirmation Modal */}
+      {showDeleteModal && (
+        <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full">
+            <h3 className="text-xl font-semibold mb-4">Delete Account</h3>
+            <p className="mb-6">Are you sure you want to delete your account? This action cannot be undone.</p>
+            <div className="flex justify-end space-x-3">
+              <button
+                onClick={closeDeleteModal}
+                className="px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-100"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleDeleteAccount}
+                className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="absolute top-0 left-0 p-4 mt-5 ms-5">
         <Link to={"/chat"}>
           <SlArrowLeft className="text-[#000000] text-2xl font-bold cursor-pointer" />
@@ -106,9 +149,16 @@ useEffect(() => {
           />
           <button
             type="submit"
-            className="bg-blue-500 text-white p-2 rounded-md w-full"
+            className="bg-blue-500 text-white p-2 rounded-md w-full mb-2"
           >
             Save changes
+          </button>
+          <button
+            type="button"
+            onClick={openDeleteModal}
+            className="bg-red-500 text-white p-2 rounded-md w-full"
+          >
+            Delete Account
           </button>
         </form>
       </div>
